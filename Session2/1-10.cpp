@@ -1,9 +1,6 @@
 #include <iostream>
 using namespace std;
 
-#include <iostream>
-using namespace std;
-
 class polygon {
 protected:
     int number; // 边数
