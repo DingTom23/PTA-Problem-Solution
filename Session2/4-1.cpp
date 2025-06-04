@@ -12,14 +12,14 @@ using namespace std;
 
 class Student {
 public:
-    Student(int num, char name, int age, int maths, int english, int chinese) {
-        this->num = num;
-        this->name = name;
-        this->age = age;
-        this->maths = maths;
-        this->english = english;
-        this->chinese = chinese;
-        this->ave = (maths + english + chinese) / 3.0;
+    Student(int _num, char _name, int _age, int _maths, int _english, int _chinese) {
+        num = _num;
+        name = _name;
+        age = _age;
+        maths = _maths;
+        english = _english;
+        chinese = _chinese;
+        ave = (_maths + _english + _chinese) / 3.0;
     }
     
     int getNum() const { return num; }
