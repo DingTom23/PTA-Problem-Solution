@@ -4,82 +4,97 @@
 
 using namespace std;
 
-class Date {
+class Date
+{
 protected:
-    int year;
-    int month;
-    int day;
+  int year;
+  int month;
+  int day;
 };
 
-class Time {
+class Time
+{
 protected:
-    int hour;
-    int minute;
-    int second;
+  int hour;
+  int minute;
+  int second;
 };
 
-class Schedule : public Date, public Time {
+class Schedule : public Date, public Time
+{
 public:
-    Schedule(int mID, const string& mDate, const string& mTime) : ID(mID) {
+  Schedule(int mID, const string &mDate, const string &mTime) : ID(mID)
+  {
 
-        size_t pos1 = mDate.find('/'); // algorithm.h
-        size_t pos2 = mDate.find('/', pos1 + 1);
-        year = stoi(mDate.substr(0, pos1)); // stoi: string 转 int / atoi 也是转换但是无视长度限制 
-        // 类似会有 to_string() int 转 string 都在 cstring.h 里面
-        month = stoi(mDate.substr(pos1 + 1, pos2 - pos1 - 1));
-        day = stoi(mDate.substr(pos2 + 1));
+    size_t pos1 = mDate.find('/');
+    size_t pos2 = mDate.find('/', pos1 + 1);
+    year = stoi(mDate.substr(0, pos1)); // stoi: string 转 int / atoi 也是转换但是无视长度限制
+    // 类似会有 to_string() int 转 string 都在 cstring.h 里面
+    month = stoi(mDate.substr(pos1 + 1, pos2 - pos1 - 1));
+    day = stoi(mDate.substr(pos2 + 1));
 
-        size_t tpos1 = mTime.find(':');
-        size_t tpos2 = mTime.find(':', tpos1 + 1);
-        hour = stoi(mTime.substr(0, tpos1));
-        minute = stoi(mTime.substr(tpos1 + 1, tpos2 - tpos1 - 1));
-        second = stoi(mTime.substr(tpos2 + 1));
-    }
+    size_t tpos1 = mTime.find(':');
+    size_t tpos2 = mTime.find(':', tpos1 + 1);
+    hour = stoi(mTime.substr(0, tpos1));
+    minute = stoi(mTime.substr(tpos1 + 1, tpos2 - tpos1 - 1));
+    second = stoi(mTime.substr(tpos2 + 1));
+  }
 
-    bool operator<(const Schedule& s2) const {
-        if (year != s2.year) return year < s2.year;
-        if (month != s2.month) return month < s2.month;
-        if (day != s2.day) return day < s2.day;
-        if (hour != s2.hour) return hour < s2.hour;
-        if (minute != s2.minute) return minute < s2.minute;
-        return second < s2.second;
-    }
+  bool operator<(const Schedule &s2) const
+  {
+    if (year != s2.year)
+      return year < s2.year;
+    if (month != s2.month)
+      return month < s2.month;
+    if (day != s2.day)
+      return day < s2.day;
+    if (hour != s2.hour)
+      return hour < s2.hour;
+    if (minute != s2.minute)
+      return minute < s2.minute;
+    return second < s2.second;
+  }
 
-    int getID() const { return ID; }
-    int getYear() const { return year; }
-    int getMonth() const { return month; }
-    int getDay() const { return day; }
-    int getHour() const { return hour; }
-    int getMinute() const { return minute; }
-    int getSecond() const { return second; }
+  int getID() const { return ID; }
+  int getYear() const { return year; }
+  int getMonth() const { return month; }
+  int getDay() const { return day; }
+  int getHour() const { return hour; }
+  int getMinute() const { return minute; }
+  int getSecond() const { return second; }
 
 private:
-    int ID;
+  int ID;
 };
 
-int main() {
-    int id;
-    Schedule* earliest = nullptr;
+int main()
+{
+  int id;
+  Schedule *earliest = nullptr;
 
-    while (cin >> id && id != 0) {
-        string date, time;
-        cin >> date >> time;
-        Schedule s(id, date, time);
+  while (cin >> id && id != 0)
+  {
+    string date, time;
+    cin >> date >> time;
+    Schedule s(id, date, time);
 
-        if (!earliest || s < *earliest) {
-            if (earliest) delete earliest;
-            earliest = new Schedule(s);
-        }
-    }
-
-    if (earliest) {
-        cout << "The urgent schedule is No." << earliest->getID() << ": "
-             << earliest->getYear() << "/" << earliest->getMonth() << "/" << earliest->getDay() << " "
-             << earliest->getHour() << ":" << earliest->getMinute() << ":" << earliest->getSecond() << endl;
+    if (!earliest || s < *earliest)
+    {
+      if (earliest)
         delete earliest;
+      earliest = new Schedule(s);
     }
+  }
 
-    return 0;
+  if (earliest)
+  {
+    cout << "The urgent schedule is No." << earliest->getID() << ": "
+         << earliest->getYear() << "/" << earliest->getMonth() << "/" << earliest->getDay() << " "
+         << earliest->getHour() << ":" << earliest->getMinute() << ":" << earliest->getSecond() << endl;
+    delete earliest;
+  }
+
+  return 0;
 }
 
 /*

@@ -26,7 +26,7 @@ public:
         cout << "构造Teacher: " << name << endl;
     }
     
-    void show() override {
+    void show() override{
         Person::show();
         cout << ", 科目: " << subject << endl;
     }

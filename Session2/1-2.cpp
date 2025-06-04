@@ -1,7 +1,3 @@
-//
-// Created by DingTom on 25-4-21.
-//
-
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -9,23 +5,17 @@
 using namespace std;
 
 class Dot{
-
   public:
     Dot(float x, float y)
-        : x(x), y(y) {
-      cout << "Dot constructor called" << endl;
+        : x(x), y(y) { cout << "Dot constructor called" << endl; }
 
-    }
     float getX() const { return x; }
     float getY() const { return y; }
     ~Dot(){
-
       cout << "Dot destructor called" << endl;
-
     }
 
   private:
-
     float x, y;
 };
 
@@ -39,14 +29,11 @@ class Color{
 
     }
     string getColor(){
-
       return colorName;
-
     }
+
     ~Color(){
-
       cout << "Color destructor called" << endl;
-
     }
   private:
 
@@ -56,12 +43,8 @@ class Color{
 class ColorCircle : public Dot, public Color{
   public:
 
-    ColorCircle(float x, float y, float radius, string colorName)
-        : Dot(x, y) , radius(radius),Color(colorName){
-
-      cout << "ColorCircle constructor called" << endl;
-
-    }
+    ColorCircle(float mx, float my, float mradius, string mcolorName)
+        : Dot(mx, my), radius(mradius), Color(mcolorName) { cout << "ColorCircle constructor called" << endl; }
 
     float getArea(){
       return 3.14 * radius * radius;
