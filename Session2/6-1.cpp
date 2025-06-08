@@ -2,21 +2,24 @@
 using namespace std;
 
 class Car{
-public:
-    Car(){
-        m_nWheels = 0;
-    }
-    void disp_welcomemsg(){
-        cout << "Welcome to the car world!" << endl;
-    }
-    int set_wheels(int n){
-        return m_nWheels = n;
-    }
-    int get_wheels(){
-        return m_nWheels;
-    }
-private:
-    int m_nWheels;
+    private:
+        int m_nWheels;
+    public:
+        Car(){
+            m_nWheels = 0;
+        }
+
+        void disp_welcomemsg(){
+            cout << "Welcome to the car world!" << endl;
+        }
+
+        void set_wheels(int n){
+            m_nWheels = n;
+        }
+
+        int get_wheels(){
+            return m_nWheels;
+        }
 };
 
 int main(){
@@ -30,6 +33,6 @@ int main(){
 
     cout << "my first car wheels num = " << myfstcar.get_wheels() << endl;
     cout << "my second car wheels num = " << myseccar.get_wheels();
-    
+
     return 0;
 }
