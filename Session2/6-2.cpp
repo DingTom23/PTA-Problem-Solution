@@ -20,7 +20,7 @@ class Stud{
             num++;
         }
 
-        void disp(){};
+        void disp() {};
         static double avg() { return sum / num; }
 };
 

@@ -1,11 +1,3 @@
-/*
-编程构建一个Student类，
-并在main函数中创建5个对象（对象信息如输入样例所示），
-其中每个对象的数据
-包括学号num、姓名name、年龄age以及数学maths、英语english、语文chinese三门功课的分数，
-然后求出每个人的平均分数ave，将学号、姓名和平均分数输出到磁盘文件STUD.DAT中，
-最后从STUD.DAT文件中读出这些数据，并显示在屏幕上。
-*/
 #include <iostream>
 #include <fstream>
 using namespace std;
